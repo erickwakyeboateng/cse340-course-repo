@@ -1,10 +1,24 @@
 <%- include('partials/header') %>
-<main>
-    <h2>Upcoming Service Projects</h2>
-    <ul class="project-list">
-        <li><strong>Park Cleanup</strong> - Join us to clean up local parks and make them beautiful!</li>
-        <li><strong>Food Drive</strong> - Help collect and distribute food to those in need.</li>
-        <li><strong>Community Tutoring</strong> - Volunteer to tutor students in various subjects.</li>
-    </ul>
-</main>
-<%- include('partials/footer') %>
+
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
+
+        <p>Explore our service projects and the organizations supporting them.</p>
+
+        <ul class="project-list">
+            <% projects.forEach(project=> { %>
+                <li>
+                    <strong>
+                        <%= project.formatted_date %>:
+                    </strong>
+                    <%= project.title %>
+                        (<%= project.organization_name %>)
+                </li>
+                <% }); %>
+        </ul>
+
+    </main>
+
+    <%- include('partials/footer') %>
