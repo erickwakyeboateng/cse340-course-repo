@@ -16,6 +16,43 @@ const getAllCategories = async () => {
   return result.rows;
 };
 
+// Get a single category by its ID
+const getCategoryById = async (categoryId) => {
+  const query = `
+    SELECT
+      category_id,
+      name,
+      description
+    FROM public.category
+    WHERE category_id = $1;
+  `;
+
+  const result = await db.query(query, [categoryId]);
+
+  return result.rows[0];
+};
+
+// Get all projects assigned to a specific category
+const getProjectsByCategoryId = async (categoryId) => {
+  const query = `
+    SELECT
+      p.project_id,
+      p.title,
+      p.description,
+      p.location,
+      p.project_date
+    FROM public.project_category pc
+    JOIN public.project p
+      ON pc.project_id = p.project_id
+    WHERE pc.category_id = $1
+    ORDER BY p.project_date;
+  `;
+
+  const result = await db.query(query, [categoryId]);
+
+  return result.rows;
+};
+
 // Get categories assigned to a specific project
 const getCategoriesByServiceProjectId = async (projectId) => {
   const query = `
@@ -65,5 +102,7 @@ const updateCategoryAssignments = async (projectId, categoryIds) => {
 export {
   getAllCategories,
   getCategoriesByServiceProjectId,
+  getCategoryById,
+  getProjectsByCategoryId,
   updateCategoryAssignments,
 };

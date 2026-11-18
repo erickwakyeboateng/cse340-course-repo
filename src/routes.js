@@ -14,6 +14,7 @@ import {
 
 import {
   showCategoriesPage,
+  showCategoryDetail,
   showAssignCategoriesForm,
   processAssignCategoriesForm,
 } from "./controllers/categories.js";
@@ -64,6 +65,8 @@ router.post("/new-project", projectValidation, processNewProjectForm);
 
 // Categories
 router.get("/categories", showCategoriesPage);
+router.get("/category/:id", showCategoryDetail);
+
 router.get("/project/:projectId/assign-categories", showAssignCategoriesForm);
 
 router.post(

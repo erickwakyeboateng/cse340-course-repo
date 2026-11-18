@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+
+    <main>
+        <h1>
+            <%= category.name %>
+        </h1>
+
+        <p>
+            <%= category.description %>
+        </p>
+
+        <section aria-labelledby="projects-heading">
+            <h2 id="projects-heading">Service Projects</h2>
+
+            <% if (projects.length> 0) { %>
+
+                <ul>
+                    <% projects.forEach(project=> { %>
+                        <li>
+                            <a href="/project/<%= project.project_id %>">
+                                <%= project.title %>
+                            </a>
+                        </li>
+                        <% }); %>
+                </ul>
+
+                <% } else { %>
+
+                    <p>No service projects have been assigned to this category yet.</p>
+
+                    <% } %>
+        </section>
+
+        <p>
+            <a href="/categories">Back to Categories</a>
+        </p>
+    </main>
+
+    <%- include('partials/footer') %>

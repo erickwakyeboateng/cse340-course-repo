@@ -7,6 +7,7 @@ import {
   createProject,
 } from "../models/projects.js";
 
+import { getCategoriesByServiceProjectId } from "../models/categories.js";
 // Import organization model functions
 import { getAllOrganizations } from "../models/organizations.js";
 
@@ -67,10 +68,12 @@ const showProjectDetailsPage = async (req, res) => {
   const id = req.params.id;
 
   const project = await getProjectDetails(id);
+  const categories = await getCategoriesByServiceProjectId(id);
 
   res.render("project", {
     title: "Service Project Details",
     project,
+    categories,
   });
 };
 

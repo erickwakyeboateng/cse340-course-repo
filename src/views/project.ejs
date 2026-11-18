@@ -26,6 +26,24 @@
                 <%= project.organization_name %>
             </a>
         </p>
+        <section>
+            <h2>Categories</h2>
+
+            <% if (categories.length> 0) { %>
+                <ul>
+                    <% categories.forEach(category=> { %>
+                        <li>
+                            <a href="/category/<%= category.category_id %>">
+                                <%= category.name %>
+                            </a>
+                        </li>
+                        <% }); %>
+                </ul>
+                <% } else { %>
+                    <p>No categories have been assigned to this project.</p>
+                    <% } %>
+        </section>
+
 
         <a href="/projects">Back to Projects</a>
     </main>
