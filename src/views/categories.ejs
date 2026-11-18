@@ -6,22 +6,25 @@
         </h1>
 
         <p>Explore different ways to support communities and make a difference.</p>
+        <p>
+            <a href="/new-category">Add New Category</a>
+        </p>
 
         <section class="category-list" aria-label="Service project categories">
 
             <% categories.forEach(category=> { %>
-
                 <article class="category-item">
                     <h3>
-                        <a href="/category/<%= category.category_id %>">
-                            <%= category.name %>
-                        </a>
+                        <%= category.name %>
                     </h3>
                     <p>
                         <%= category.description %>
                     </p>
-                </article>
 
+                    <a href="/edit-category/<%= category.category_id %>">
+                        Edit Category
+                    </a>
+                </article>
                 <% }); %>
 
         </section>
