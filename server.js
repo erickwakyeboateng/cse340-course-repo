@@ -3,9 +3,14 @@ import { fileURLToPath } from "url";
 import path from "path";
 import { testConnection } from "./src/models/db.js";
 import router from "./src/routes.js";
+import session from "express-session";
+import flash from "./src/middleware/flash.js";
 
 // Define the application environment
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || "production";
+
+//Load session key
+const SESSION_SECRET = process.env.SESSION_SECRET;
 
 // Define the port number
 const PORT = process.env.PORT || 3000;
@@ -20,6 +25,10 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "src", "views"));
 
+// Allow Express to receive and process common POST data
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.use(express.static(path.join(__dirname, "public")));
 
 // Middleware to log all incoming requests
@@ -29,6 +38,19 @@ app.use((req, res, next) => {
   }
   next(); // Pass control to the next middleware or route
 });
+
+//Set Up Session Management
+app.use(
+  session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60 * 60 * 1000 }, //Session expires after 1 hour of inactivity
+  }),
+);
+
+// Use flash message middleware
+app.use(flash);
 
 // Middleware to make NODE_ENV available to all templates
 app.use((req, res, next) => {
