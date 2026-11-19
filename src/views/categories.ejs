@@ -6,6 +6,7 @@
         </h1>
 
         <p>Explore different ways to support communities and make a difference.</p>
+
         <p>
             <a href="/new-category">Add New Category</a>
         </p>
@@ -15,8 +16,11 @@
             <% categories.forEach(category=> { %>
                 <article class="category-item">
                     <h3>
-                        <%= category.name %>
+                        <a href="/category/<%= category.category_id %>">
+                            <%= category.name %>
+                        </a>
                     </h3>
+
                     <p>
                         <%= category.description %>
                     </p>
