@@ -369,3 +369,9 @@ ORDER BY p.project_id;
 SELECT category_id, name, description
 FROM category
 ORDER BY category_id;
+
+
+SELECT column_name, data_type
+FROM information_schema.columns
+WHERE table_name = 'project'
+ORDER BY ordinal_position;
