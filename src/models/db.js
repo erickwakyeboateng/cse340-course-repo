@@ -91,4 +91,20 @@ const testConnection = async () => {
   }
 };
 
+//check ssl
+const checkSSL = async () => {
+  try {
+    const result = await db.query(`
+      SELECT ssl, version, cipher
+      FROM pg_stat_ssl
+      WHERE pid = pg_backend_pid()
+    `);
+
+    console.log("SSL STATUS:", result.rows[0]);
+  } catch (error) {
+    console.error("SSL CHECK FAILED:", error.message);
+  }
+};
+checkSSL();
+
 export { db as default, testConnection };
