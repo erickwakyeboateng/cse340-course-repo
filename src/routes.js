@@ -4,6 +4,16 @@ import { showHomePage } from "./controllers/index.js";
 import { testErrorPage } from "./controllers/errors.js";
 
 import {
+  showUserRegistrationForm,
+  processUserRegistrationForm,
+  showLoginForm,
+  processLoginForm,
+  processLogout,
+  requireLogin,
+  showDashboard,
+} from "./controllers/users.js";
+
+import {
   showOrganizationsPage,
   showOrganizationDetailsPage,
   showNewOrganizationForm,
@@ -86,6 +96,18 @@ router.post(
   "/project/:projectId/assign-categories",
   processAssignCategoriesForm,
 );
+
+// User registration routes
+router.get("/register", showUserRegistrationForm);
+router.post("/register", processUserRegistrationForm);
+
+// User login routes
+router.get("/login", showLoginForm);
+router.post("/login", processLoginForm);
+router.get("/logout", processLogout);
+
+// Protected dashboard route
+router.get("/dashboard", requireLogin, showDashboard);
 
 // Edit category
 router.get("/edit-category/:id", showEditCategoryForm);

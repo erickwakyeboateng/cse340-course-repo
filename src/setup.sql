@@ -375,3 +375,22 @@ SELECT column_name, data_type
 FROM information_schema.columns
 WHERE table_name = 'project'
 ORDER BY ordinal_position;
+
+create table roles(
+role_id serial primary key,
+role_name varchar(50) unique not null,
+role_description text
+);
+
+insert into roles (role_name, role_description) values 
+    ('user', 'Standard user with basic access'),
+    ('admin', 'Administrator with full system access');
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role_id INTEGER REFERENCES roles(role_id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
