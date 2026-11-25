@@ -603,3 +603,172 @@ form button[type="submit"]:active {
     min-width: 500px;
   }
 }
+
+/* =========================================
+   DASHBOARD - TWO COLUMN LAYOUT
+========================================= */
+
+.dashboard-page {
+  max-width: 1000px;
+}
+
+/* Welcome banner */
+
+.dashboard-welcome {
+  padding: 28px;
+  margin-bottom: 25px;
+  background-color: #edf5ef;
+  border-left: 5px solid #285943;
+  border-radius: 8px;
+}
+
+.dashboard-welcome h2 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+}
+
+.dashboard-welcome p {
+  margin: 0;
+  color: #5b665f;
+}
+
+/* Two-column card layout */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+/* Account information card */
+
+.dashboard-profile {
+  padding: 24px;
+  background-color: #fff;
+  border: 1px solid #e0e6e2;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.dashboard-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e5e9e6;
+}
+
+.dashboard-card-heading h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.profile-item {
+  margin-bottom: 18px;
+  padding: 15px;
+  background-color: #f7f9f7;
+  border-radius: 7px;
+}
+
+.profile-item:last-child {
+  margin-bottom: 0;
+}
+
+.profile-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #68746c;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.profile-value {
+  display: block;
+  color: #222;
+  font-size: 16px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* Administration card */
+
+.dashboard-admin {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  color: #fff;
+  background-color: #285943;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(40, 89, 67, 0.12);
+}
+
+.dashboard-admin .dashboard-card-heading {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.dashboard-admin .dashboard-card-heading h2 {
+  color: #fff;
+}
+
+.admin-label {
+  padding: 4px 9px;
+  color: #285943;
+  background-color: #dcefe3;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.admin-description {
+  margin: 0 0 25px;
+  color: #e3eee7;
+  line-height: 1.6;
+}
+
+/* Admin action link */
+
+.admin-action-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding: 13px 16px;
+  color: #285943;
+  background-color: #fff;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.admin-action-link:hover {
+  background-color: #edf5ef;
+}
+
+.admin-arrow {
+  font-size: 20px;
+}
+
+/* Responsive dashboard */
+
+@media (max-width: 700px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-welcome {
+    padding: 20px;
+  }
+
+  .dashboard-profile,
+  .dashboard-admin {
+    padding: 20px;
+  }
+}

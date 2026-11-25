@@ -6,16 +6,18 @@
         </h1>
 
         <section class="dashboard-welcome">
-            <div class="dashboard-welcome-content">
-                <h2>Welcome to your Dashboard</h2>
-                <p>Manage your account and explore the CSE 340 Service Network.</p>
-            </div>
+            <h2>Welcome, <%= name || "User" %>!</h2>
+            <p>Manage your account and explore the CSE 340 Service Network.</p>
         </section>
 
-        <section class="dashboard-profile">
-            <h2>Account Information</h2>
+        <div class="dashboard-grid">
 
-            <div class="profile-information">
+            <!-- Account Information -->
+            <section class="dashboard-profile">
+                <div class="dashboard-card-heading">
+                    <h2>Account Information</h2>
+                </div>
+
                 <div class="profile-item">
                     <span class="profile-label">Name</span>
                     <span class="profile-value">
@@ -24,30 +26,33 @@
                 </div>
 
                 <div class="profile-item">
-                    <span class="profile-label">Email</span>
+                    <span class="profile-label">Email Address</span>
                     <span class="profile-value">
                         <%= email %>
                     </span>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <% if (user && user.role_name==='admin' ) { %>
-            <section class="dashboard-admin">
-                <div class="admin-card-content">
-                    <div>
+            <!-- Admin section - only visible to admins -->
+            <% if (user && user.role_name==='admin' ) { %>
+                <section class="dashboard-admin">
+                    <div class="dashboard-card-heading">
                         <h2>Administration</h2>
-                        <p>Manage registered users and view their assigned roles.</p>
+                        <span class="admin-label">ADMIN</span>
                     </div>
 
-                    <a href="/users" class="admin-action-link">
-                        View Registered Users
-                        <span aria-hidden="true">&rarr;</span>
-                    </a>
-                </div>
-            </section>
-            <% } %>
+                    <p class="admin-description">
+                        Manage registered users and review their assigned roles.
+                    </p>
 
+                    <a href="/users" class="admin-action-link">
+                        <span>View Registered Users</span>
+                        <span class="admin-arrow">&rarr;</span>
+                    </a>
+                </section>
+                <% } %>
+
+        </div>
     </main>
 
     <%- include('partials/footer') %>
