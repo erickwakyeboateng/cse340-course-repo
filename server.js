@@ -7,7 +7,7 @@ import session from "express-session";
 import flash from "./src/middleware/flash.js";
 
 // Define the application environment
-const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || "production";
+const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || "development";
 
 //Load session key
 const SESSION_SECRET = process.env.SESSION_SECRET;
@@ -58,7 +58,7 @@ app.use((req, res, next) => {
   if (req.session && req.session.user) {
     res.locals.isLoggedIn = true;
   }
-
+  res.locals.user = req.session.user || null;
   res.locals.NODE_ENV = NODE_ENV;
   next();
 });
