@@ -12,6 +12,7 @@ import {
   requireLogin,
   requireRole,
   showDashboard,
+  showUsers,
 } from "./controllers/users.js";
 
 import {
@@ -145,6 +146,9 @@ router.post(
   categoryValidation,
   processEditCategoryForm,
 );
+
+//Users Route
+router.get("/users", requireRole("admin"), showUsers);
 
 // Error-handling routes
 router.get("/test-error", testErrorPage);

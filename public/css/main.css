@@ -508,3 +508,98 @@ form button[type="submit"]:active {
     text-align: center;
   }
 }
+
+/* =========================================
+   USERS TABLE
+========================================= */
+
+.users-table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 25px 0;
+  border: 1px solid #e0e6e2;
+  border-radius: 10px;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 550px;
+  background-color: #fff;
+}
+
+.users-table thead {
+  background-color: #285943;
+  color: #fff;
+}
+
+.users-table th {
+  padding: 15px 18px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.users-table td {
+  padding: 15px 18px;
+  border-bottom: 1px solid #e8ece9;
+  vertical-align: middle;
+}
+
+.users-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.users-table tbody tr:hover {
+  background-color: #f4f8f5;
+}
+
+/* Role badges */
+
+.role-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.admin-role {
+  color: #155c3b;
+  background-color: #dcefe3;
+  border: 1px solid #b8d9c4;
+}
+
+.user-role {
+  color: #555;
+  background-color: #eeeeee;
+  border: 1px solid #dddddd;
+}
+
+/* Users page back link */
+
+.back-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #285943;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Mobile users table */
+
+@media (max-width: 600px) {
+  .users-table th,
+  .users-table td {
+    padding: 12px;
+  }
+
+  .users-table {
+    min-width: 500px;
+  }
+}

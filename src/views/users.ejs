@@ -1,0 +1,50 @@
+<%- include('partials/header') %>
+
+    <main class="management-container">
+        <h1>
+            <%= title %>
+        </h1>
+
+        <p class="form-intro">
+            View all registered users and their assigned roles.
+        </p>
+
+        <div class="users-table-container">
+            <% if (users.length> 0) { %>
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% users.forEach(user=> { %>
+                            <tr>
+                                <td>
+                                    <%= user.name %>
+                                </td>
+                                <td>
+                                    <%= user.email %>
+                                </td>
+                                <td>
+                                    <span
+                                        class="role-badge <%= user.role_name === 'admin' ? 'admin-role' : 'user-role' %>">
+                                        <%= user.role_name %>
+                                    </span>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                    <p>No registered users found.</p>
+                    <% } %>
+        </div>
+
+        <a href="/dashboard" class="back-link">Back to Dashboard</a>
+    </main>
+
+    <%- include('partials/footer') %>
